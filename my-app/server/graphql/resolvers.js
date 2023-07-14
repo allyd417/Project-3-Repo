@@ -1,30 +1,24 @@
 const pets = [];
+const axios = require('axios');
 
 const resolvers = {
-    getAllPets: () => pets,
-    getPetById: (args) => pets.find((pet) => pet.id === args.id),
-    createPet: (args) => {
-        const pet = {
-            id: Math.random().toString(),
-            name: args.name,
-            age: args.age,
-        };
-        pets.push(pet);
-        return pet;
+    getAllPets: async () => {
+        try {
+            const response = await axios.get('http://api.example.com/pets');
+            return response.data;
+        } catch (error) {
+            console.log('Error fetching pets:', error);
+            throw new Error('Failed to fecth pets');
+        }
     },
-    updatePet: (args) => {
-        const pet = pets.find((pet) => pet.id === args.id);
-        if (!pet) return null;
-        if (args.name) pet.name =args.name;
-        if (args.age) pet.age = args.age;
-        return pet;
-    },
-    deletePet: (args) => {
-        const index = pets.findIndex((pet) => pet.id === args.id);
-        if (index === -1) return null;
-        const pet = pets[index];
-        pets.splice(index,1);
-        return pet;
+    createPet: async (args) => {
+        try {
+            const response = await axios.post('https://api.example.com/pets', args);
+            return response.data;
+        } catch (error) {
+            console.error('Error creating pet:', error);
+            throw new Error('Failed to create pet');
+        }
     },
 };
 
