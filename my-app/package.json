@@ -1,6 +1,6 @@
 {
   "homepage": "",
-  "name": "Saint Louis Pets",
+  "name": "stl-pets",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
