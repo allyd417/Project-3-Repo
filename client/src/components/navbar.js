@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import './css/homepage.css';
 
-function Navbar({ setPage }) { 
+function Navbar({ setPage }) {
   const [active, setActivePage] = useState('HomePage');
 
   const handleClick = (page) => {
@@ -10,30 +11,35 @@ function Navbar({ setPage }) {
 
   return (
     <div className="navbar">
-      <p 
-      className={active === 'HomePage' ? 'active' : ''}
-      onClick={() => handleClick('HomePage')}
+      <p
+        className={active === 'HomePage' ? 'active' : ''}
+        onClick={() => handleClick('HomePage')}
       >
+        HomePage
       </p>
       <p
         className={active === 'adopt' ? 'active' : ''}
         onClick={() => handleClick('adopt')}
       >
-      </p>
-      <p
-        className={active === 'petfood' ? 'active' : ''}
-        onClick={() => handleClick('petfood')}
-      >
+        Adopt
       </p>
       <p
         className={active === 'locations' ? 'active' : ''}
         onClick={() => handleClick('locations')}
       >
+        Locations
       </p>
       <p
-        className={active === 'exotic-pets' ? 'active' : ''}
-        onClick={() => handleClick('exotic-pets')}
+        className={active === 'dog-breeds' ? 'active' : ''}
+        onClick={() => handleClick('dog-breeds')}
       >
+        Dog&nbsp;Breeds
+      </p>
+      <p
+        className={active === 'cat-breeds' ? 'active' : ''}
+        onClick={() => handleClick('cat-breeds')}
+      >
+        Cat&nbsp;Breeds
       </p>
     </div>
   );

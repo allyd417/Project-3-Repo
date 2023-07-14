@@ -13,17 +13,17 @@ export default function PortfolioContainer() {
     if (currentPage === 'Adopt') {
       return <Adopt />;
     }
-    if (currentPage === 'ExoticPets') {
-      return <ExoticPets />;
+    if (currentPage === 'Locations') {
+      return <Locations />;
     }
-    if (currentPage === 'Homepage') {
-      return <Homepage />;
+    if (currentPage === 'Dog Breeds') {
+      return <Dog Breeds />;
+    }
+    if (currentPage === 'Cats Breeds') {
+      return <Cats Breeds />;
     }
     if (currentPage === 'Navbar') {
       return <Navbar />;
-    }
-    if (currentPage === 'Locations') {
-      return <Locations />;
     }
      // Default case: Render the Contact component if none of the above conditions are met
     return <Homepage />;
