@@ -1,26 +1,58 @@
 /* homepage.css */
 
 .homepage {
-  background-color: #f2f2f2;
+  background-color: #cf1919;
 }
 
-.homepage header {
-  background-color: #333;
-  color: #fff;
+.homepage-title {
+  background-color: #cf1919;
+  color: white;
+  text-align: left;
   padding: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .homepage-title {
   margin: 0;
 }
 
-.homepage main {
+.homepage-title .Spear {
+  margin-left: 10px; /* Adjust the spacing between the image and text */
+}
+
+.homepage-content h2 {
+  background-color: #ffffff;
+  color: #000000;
   padding: 20px;
 }
 
 .homepage-content {
-  background-color: #fff;
+  background-color: #246eb9;
   padding: 20px;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #000000;
+  border: #000000;
+}
+
+.full-width-image {
+  width: 50%;
+  height: 50%;
+  background-color: #000000;
+}
+
+.Spear {
+  width: 50px;
+  height: 50px;
+  text-align: left;
+  margin: 0;
 }
 
 .homepage-footer {
