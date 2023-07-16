@@ -1,46 +1,56 @@
 import React, { useState } from 'react';
 import './css/homepage.css';
+import { Link } from 'react-router-dom';
 
+// Navbar component
 function Navbar({ setPage }) {
-  const [active, setActivePage] = useState('HomePage');
+  const [active, setActivePage] = useState('HomePage'); // State to track the active page
 
+
+
+  // Handle click event for each navbar item
   const handleClick = (page) => {
-    setPage(page);
-    setActivePage(page);
+    setActivePage(page); // Set the clicked item as active
+    setPage(page); // Update the page state in the parent component
   };
 
+  // Render the navbar with clickable items
   return (
     <div className="navbar">
+      <div><h1 className="homepage-title">STL-Pets <img src="/images/Spear-Flower.png" alt="Spear" className="Spear" /></h1>{/* Display the main title */}
+      </div>
+      <div>
+      <Link to="/" onClick={() => handleClick('HomePage')}>
       <p
         className={active === 'HomePage' ? 'active' : ''}
-        onClick={() => handleClick('HomePage')}
       >
         HomePage
-      </p>
-      <p
+      </p> </Link>
+      <Link to="/adopt" onClick={() => handleClick('adopt')}>
+      <p 
         className={active === 'adopt' ? 'active' : ''}
-        onClick={() => handleClick('adopt')}
       >
         Adopt
-      </p>
+      </p> </Link>
+      <Link to="/locations" onClick={() => handleClick('locations')}>
       <p
         className={active === 'locations' ? 'active' : ''}
-        onClick={() => handleClick('locations')}
       >
         Locations
-      </p>
+      </p> </Link>
+      <Link to="/dog-breeds" onClick={() => handleClick('dog-breeds')}>
       <p
         className={active === 'dog-breeds' ? 'active' : ''}
-        onClick={() => handleClick('dog-breeds')}
       >
         Dog&nbsp;Breeds
-      </p>
+      </p> </Link>
+      <Link to="/cat-breeds" onClick={() => handleClick('cat-breeds')}>
       <p
         className={active === 'cat-breeds' ? 'active' : ''}
-        onClick={() => handleClick('cat-breeds')}
       >
         Cat&nbsp;Breeds
-      </p>
+      </p> </Link>
+      </div>
     </div>
   );
 }
