@@ -7,6 +7,7 @@ import Locations from './components/locations';
 import Dogs from './components/dogs';
 import Cats from './components/cats';
 
+
 function App() {
   const [page, setPage] = useState('HomePage');
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/locations" element={<Locations />} />
         <Route path="/dogs" element={<Dogs />} />
         <Route path="/cats" element={<Cats />} />
+        
       </Routes>
       </Router>
     </div>

@@ -17,39 +17,40 @@ function Navbar({ setPage }) {
   // Render the navbar with clickable items
   return (
     <div className="navbar">
-      <div><h1 className="homepage-title">STL-Pets <img src="/images/Spear-Flower.png" alt="Spear" className="Spear" /></h1>{/* Display the main title */}
+      <div className="logo">
+        <h1 className="homepage-title">STL-Pets <img src="/images/Spear-Flower.png" alt="Spear" className="Spear" /></h1>{/* Display the main title */}
       </div>
-      <div>
-      <Link to="/" onClick={() => handleClick('HomePage')}>
-      <p
-        className={active === 'HomePage' ? 'active' : ''}
-      >
-        HomePage
-      </p> </Link>
-      <Link to="/adopt" onClick={() => handleClick('adopt')}>
-      <p 
-        className={active === 'adopt' ? 'active' : ''}
-      >
-        Adopt
-      </p> </Link>
-      <Link to="/locations" onClick={() => handleClick('locations')}>
-      <p
-        className={active === 'locations' ? 'active' : ''}
-      >
-        Locations
-      </p> </Link>
-      <Link to="/dog-breeds" onClick={() => handleClick('dog-breeds')}>
-      <p
-        className={active === 'dog-breeds' ? 'active' : ''}
-      >
-        Dog&nbsp;Breeds
-      </p> </Link>
-      <Link to="/cat-breeds" onClick={() => handleClick('cat-breeds')}>
-      <p
-        className={active === 'cat-breeds' ? 'active' : ''}
-      >
-        Cat&nbsp;Breeds
-      </p> </Link>
+      <div className="nav-links">
+        <Link to="/" onClick={() => handleClick('HomePage')}>
+        <p
+          className={active === 'HomePage' ? 'active' : ''}
+        >
+          HomePage
+        </p> </Link>
+        <Link to="/adopt" onClick={() => handleClick('adopt')}>
+        <p 
+          className={active === 'adopt' ? 'active' : ''}
+        >
+          Adopt
+        </p> </Link>
+        <Link to="/locations" onClick={() => handleClick('locations')}>
+        <p
+          className={active === 'locations' ? 'active' : ''}
+        >
+          Locations
+        </p> </Link>
+        <Link to="/dog-breeds" onClick={() => handleClick('dog-breeds')}>
+        <p
+          className={active === 'dog-breeds' ? 'active' : ''}
+        >
+          Dog&nbsp;Breeds
+        </p> </Link>
+        <Link to="/cat-breeds" onClick={() => handleClick('cat-breeds')}>
+        <p
+          className={active === 'cat-breeds' ? 'active' : ''}
+        >
+          Cat&nbsp;Breeds
+        </p> </Link>
       </div>
     </div>
   );

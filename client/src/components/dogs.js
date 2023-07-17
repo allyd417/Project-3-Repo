@@ -10,7 +10,7 @@ function Cats() {
             <a href="/images/cat1.jpg" target="_blank" rel="noopener noreferrer">
               <img src="/images/cat1.jpg" alt="cat1" style={{ width: 100 }} />
               <div className="caption">
-                <p>cat1</p>
+                <p>dog</p>
               </div>
             </a>
           </div>
