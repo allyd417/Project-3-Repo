@@ -7,7 +7,7 @@ const mongoose= require('mongoose');
  const resolvers = require('./graphql/resolvers');
 
  const app = express();
- const PORT = 3000;
+ const PORT = 3001;
  
  //serve static files from public  folder 
  app.use(express.static(path.join(__dirname, '../client/build')));
