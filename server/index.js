@@ -17,9 +17,6 @@ const mongoose= require('mongoose');
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
  });
 
-//serve static files from the css folder
-app.use('/css', express.static(path.join(__dirname, '../client/src/components/css')));
-
  app.use(
     '/graphql',
     graphqlHTTP({
@@ -39,4 +36,3 @@ mongoose.connection.once('open', () => {
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-})
