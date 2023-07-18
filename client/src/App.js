@@ -4,8 +4,8 @@ import Navbar from './components/navbar';
 import HomePage from './components/homepage';
 import Adopt from './components/adopt';
 import Locations from './components/locations';
-import Dogs from './components/dogs';
-import Cats from './components/cats';
+import Dogs from './components/dog breeds';
+import Cats from './components/cats breeds';
 
 
 function App() {
@@ -21,9 +21,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/adopt" element={<Adopt />} />
         <Route path="/locations" element={<Locations />} />
-        <Route path="/dogs" element={<Dogs />} />
-        <Route path="/cats" element={<Cats />} />
-        
+        <Route path="/dog breeds" element={<Dogs />} />
+        <Route path="/cat breeds" element={<Cats />} />
       </Routes>
       </Router>
     </div>
