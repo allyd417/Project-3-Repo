@@ -1,9 +1,8 @@
 const express = require('express');
 const path = require('path');
 const { graphqlHTTP } = require('express-graphql');
-const mongoose= require('mongoose');
-const cors = require('cors'); // Import the cors middleware
 
+const mongoose= require('mongoose');
  const schema = require('./graphql/schema');
  const resolvers = require('./graphql/resolvers');
 
