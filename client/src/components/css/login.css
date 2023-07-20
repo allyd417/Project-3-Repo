@@ -1,0 +1,30 @@
+/* Login.css */
+
+/* Style the outer container (optional) */
+#signInButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Style the Google login button */
+.google-login-button {
+  background-color: #4285F4; /* Google blue */
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect for the button */
+.google-login-button:hover {
+  background-color: #357AE8; /* Slightly darker blue on hover */
+}
+
+/* Active effect for the button */
+.google-login-button:active {
+  background-color: #2E5BCC; /* Slightly darker blue when clicked */
+}
