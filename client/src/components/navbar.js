@@ -33,24 +33,6 @@ function Navbar({ setPage }) {
         >
           Adopt
         </p> </Link>
-        <Link to="/locations" onClick={() => handleClick('locations')}>
-        <p
-          className={active === 'locations' ? 'active' : ''}
-        >
-          Locations
-        </p> </Link>
-        <Link to="/dog-breeds" onClick={() => handleClick('dog-breeds')}>
-        <p
-          className={active === 'dog-breeds' ? 'active' : ''}
-        >
-          Dog&nbsp;Breeds
-        </p> </Link>
-        <Link to="/cat-breeds" onClick={() => handleClick('cat-breeds')}>
-        <p
-          className={active === 'cat-breeds' ? 'active' : ''}
-        >
-          Cat&nbsp;Breeds
-        </p> </Link>
       </div>
     </div>
   );
