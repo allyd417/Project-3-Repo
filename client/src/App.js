@@ -1,48 +1,56 @@
-import React, { useState } from 'react'; // Import the useState hook
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import the BrowserRouter, Route and Routes components
-import Navbar from './components/navbar'; // Import the Navbar component
-import HomePage from './components/homepage'; // Import the HomePage component
-import Adopt from './components/adopt'; // Import the Adopt component
-import Login from './components/login'; // Import the Login component
-import Logout from './components/logout'; // Import the Logout component
-import { useEffect } from 'react'; // Import the useEffect hook
-import { gapi } from 'gapi-script'; // Import the Google API library
+import React from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-const clientId = '827047395315-f3mgmjgdcesmj1eiifpj96aps8lecfdb.apps.googleusercontent.com'; // Replace with your actual Google Client ID
+import HomePage from './components/homepage';
+import Navbar from './components/navbar';
+import Signup from './components/signup';
+import Login from './components/login';
+import Adopt from './components/adopt';
 
-function App() {
-  const [page, setPage] = useState('HomePage');
-  const [user, setUser] = useState(null); // State to manage user authentication
+const App = () => {
+  // Construct our main GraphQL API endpoint
+  const httpLink = createHttpLink({
+    uri: '/graphql',
+  });
 
-  // Function to handle successful login
-   useEffect(() => {
-    function start() {
-      gapi.client.init({
-        'clientId': clientId,
-        'scope': ""
-    })
-  };
+  // Construct request middleware that will attach the JWT token to every request as an `authorization` header
+  const authLink = setContext((_, { headers }) => {
+    // Get the authentication token from local storage if it exists
+    const token = localStorage.getItem('id_token');
+    // Return the headers to the context so httpLink can read them
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : '', // If there is no token, return an empty string
+      },
+    };
+  });
 
-  gapi.load('client:auth2', start);
-});
+  const client = new ApolloClient({
+    // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+  });
 
-
-  
   return (
     <div>
-      <Router>
-        <Navbar setPage={setPage} />
-        {/* Render the Login component if the user is not logged in */}
-        <Login />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/adopt" element={<Adopt />} />
-          {/* Render the Logout component if the user is logged in */}
-          <Route path="/logout" element={<Logout onLogout={() => setUser(null)} />} />
-        </Routes>
-      </Router>
+      <ApolloProvider client={client}>
+        <Router>
+          <Navbar />
+          {/* Render the Login component if the user is not logged in */}
+          <Signup />
+          <Login />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/adopt" element={<Adopt />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </Router>
+      </ApolloProvider>
     </div>
   );
-}
+};
 
 export default App;
