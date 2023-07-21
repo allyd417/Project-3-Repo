@@ -33,6 +33,7 @@ function Navbar({ setPage }) {
         >
           Adopt
         </p> </Link>
+        
       </div>
     </div>
   );
