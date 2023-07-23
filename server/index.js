@@ -10,7 +10,7 @@ require('dotenv').config({ path: './.env' });
 
 const schema = require('./graphql/schema');
 const resolvers = require('./graphql/resolvers');
-const AuthService = require('./utils/auth'); // Replace with the correct path to your auth.js file
+const AuthService = require('./utils/auth'); 
 
 const app = express();
 const PORT = 3001;
@@ -103,7 +103,6 @@ app.post('/signup', (req, res) => {
     const { username, email, password } = req.body;
 
     // Implement the signup logic using the AuthService
-    // For example:
     if (AuthService.signupUser(username, email, password)) {
         // If signup is successful, return a response with the token
         const token = AuthService.generateToken(email); // You may have a different method for token generation
