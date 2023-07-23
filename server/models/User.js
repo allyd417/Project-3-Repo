@@ -19,10 +19,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  pets: [
+  savedPets: [ 
     {
       type: Schema.Types.ObjectId,
-      ref: 'Pets',
+      ref: 'Pet', // assuming you will have a 'Pet' model
     },
   ],
 });
