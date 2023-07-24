@@ -18,6 +18,7 @@ function Adopt() {
           }
         }
       `;
+    
       const response = await axios.get('/graphql', {
         params: {
           query,
@@ -31,25 +32,6 @@ function Adopt() {
   }
   
 
-  // async function fetchAnimals() {
-  //   try {
-  //     const response = await axios.post('/graphql', {
-  //       query: `{
-  //         pets {
-  //           name
-  //           species
-  //           age
-  //           image
-  //           description
-  //         }
-  //       }`,
-  //     });
-  
-  //     setAnimals(response.data.data.pets);
-  //   } catch (error) {
-  //     console.error('Error fetching animals:', error);
-  //   }
-  // }
 
   useEffect(() => {
     fetchAnimals();
