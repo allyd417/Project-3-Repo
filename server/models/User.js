@@ -22,7 +22,7 @@ const userSchema = new Schema({
   savedPets: [ 
     {
       type: Schema.Types.ObjectId,
-      ref: 'Pet', // assuming you will have a 'Pet' model
+      ref: 'Pet', 
     },
   ],
 });
