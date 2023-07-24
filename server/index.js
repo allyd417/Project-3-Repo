@@ -37,6 +37,9 @@ mongoose.connection.once('open', () => {
     console.log('Connected to database');
 });
 
+// Modify the port configuration to use the environment variable provided by Heroku
+const port = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 })
