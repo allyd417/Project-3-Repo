@@ -1,40 +1,24 @@
 const { Schema, model } = require('mongoose');
 
 const petSchema = new Schema({
-  petText: {
-    type: String,
-    required: 'You need to leave a pet!',
-    minlength: 1,
-    maxlength: 280,
-    trim: true,
-  },
-  petAuthor: {
+  name: {
     type: String,
     required: true,
-    trim: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
+  species: {
+    type: String,
+    required: true,
   },
-  comments: [
-    {
-      commentText: {
-        type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 280,
-      },
-      commentAuthor: {
-        type: String,
-        required: true,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
+  age: {
+    type: Number,
+    required: true,
+  },
+  image: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
 });
 
 const Pet = model('Pet', petSchema);

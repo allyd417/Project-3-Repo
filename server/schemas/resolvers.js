@@ -1,30 +1,21 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Pet } = require('../models');
+const { User, Pets } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return User.find().populate('pets');
-    },
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('pets');
-    },
-    pets: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Pet.find(params).sort({ createdAt: -1 });
-    },
-    pet: async (parent, { petId }) => {
-      return Pet.findOne({ _id: petId });
-    },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate('pets');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    getAllPets: async () => Pets.find(),
+    // Add the resolver for the searchPets operation
+    searchPets: async (parent, { species }) => {
+      return Pets.find({ species });
+    },
   },
-
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
@@ -48,71 +39,30 @@ const resolvers = {
 
       return { token, user };
     },
-    addPet: async (parent, { petText }, context) => {
-      if (context.user) {
-        const pet = await Pet.create({
-          petText,
-          petAuthor: context.user.username,
-        });
+   
+ 
+    
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { pets: pet._id } }
-        );
+    savePet: async (parent, { petId }, context) => {
+      // Check if the user is authenticated
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in to save pets.');
+      }
 
-        return pet;
+      // Find the pet by ID
+      const pet = await Pets.findOne({ _id: petId });
+      if (!pet) {
+        throw new Error('Pet not found.');
       }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addComment: async (parent, { petId, commentText }, context) => {
-      if (context.user) {
-        return Pet.findOneAndUpdate(
-          { _id: petId },
-          {
-            $addToSet: {
-              comments: { commentText, commentAuthor: context.user.username },
-            },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removePet: async (parent, { petId }, context) => {
-      if (context.user) {
-        const pet = await Pet.findOneAndDelete({
-          _id: petId,
-          petAuthor: context.user.username,
-        });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { pets: pet._id } }
-        );
+      // Add the pet's ID to the user's savedPets array and save the user document
+      const user = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { savedPets: petId } },
+        { new: true }
+      );
 
-        return pet;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeComment: async (parent, { petId, commentId }, context) => {
-      if (context.user) {
-        return Pet.findOneAndUpdate(
-          { _id: petId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+      return user;
     },
   },
 };

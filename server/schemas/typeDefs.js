@@ -1,50 +1,56 @@
 const { gql } = require('apollo-server-express');
 
+
 const typeDefs = gql`
-  type User {
-    _id: ID
-    username: String
-    email: String
-    password: String
-    pets: [Pet]!
-  }
+    type Pet {
+        _id: ID
+        name: String
+        species: String
+        age: Int
+        description: String
+        image: String
+    }
 
-  type Pet {
-    _id: ID
-    petText: String
-    petAuthor: String
-    createdAt: String
-    comments: [Comment]!
-  }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
+    type PetSearch {
+        _id: ID
+        searchCriteria: String
+        results: [Pet]
+    }
 
-  type Auth {
-    token: ID!
-    user: User
-  }
 
-  type Query {
-    users: [User]
-    user(username: String!): User
-    pets(username: String): [Pet]
-    pet(petId: ID!): Pet
-    me: User
-  }
+    type User {
+        _id: ID
+        username: String
+        email: String
+        password: String
+        savedSearches: [PetSearch]
+        savedPets: [ID]
+    }
+ 
+    type Auth {
+        token: ID!
+        user: User
+    }
+   
+    type Query {
+        users: [User]
+        user(username: String!): User
+        getAllPets: [Pet]
+        pet(name: String!): Pet
+        me: User
+        searchPets(species: String!): [Pet]
+    }
 
-  type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-    addPet(petText: String!): Pet
-    addComment(petId: ID!, commentText: String!): Pet
-    removePet(petId: ID!): Pet
-    removeComment(petId: ID!, commentId: ID!): Pet
-  }
+
+    type Mutation {
+        addUser(username: String!, email: String!, password: String!): Auth
+        login(email: String!, password: String!): Auth
+        saveSearch(userId: ID!, searchCriteria: String!, results: [ID]!): User
+        savePet(userId: ID!, petId: ID!): User
+    }
 `;
 
+
 module.exports = typeDefs;
+
