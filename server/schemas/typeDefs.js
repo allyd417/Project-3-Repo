@@ -24,8 +24,8 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
-        savedSearches: [PetSearch]
-        savedPets: [ID]
+        # savedSearches: [PetSearch]
+        savedPets: [Pet]
     }
  
     type Auth {
@@ -46,8 +46,8 @@ const typeDefs = gql`
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        saveSearch(userId: ID!, searchCriteria: String!, results: [ID]!): User
-        savePet(userId: ID!, petId: ID!): User
+        # saveSearch(userId: ID!, searchCriteria: String!, results: [ID]!): User
+        savePet( petId: ID!): User
     }
 `;
 
