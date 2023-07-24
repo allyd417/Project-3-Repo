@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 const Pet = require('../models/Pets');
+=======
+const Pet = require('../models/Pet');
+>>>>>>> Stashed changes
 const User = require('../models/User');
 
 const resolvers = {

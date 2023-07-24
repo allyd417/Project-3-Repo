@@ -1,5 +1,3 @@
-const { buildSchema } = require('graphql');
-
 const schema = buildSchema(`
   type Pet {
     id: ID!
