@@ -4,9 +4,10 @@ const typeDefs = gql`
     type Pet {
         _id: ID
         name: String
-        type: String
+        species: String
+        age: Int
         description: String
-        imageUrl: String
+        image: String
     }
 
     type PetSearch {
@@ -31,7 +32,7 @@ const typeDefs = gql`
     type Query {
         users: [User]
         user(username: String!): User
-        pets: [Pet]
+        getAllPets: [Pet]
         pet(name: String!): Pet
         me: User
     }

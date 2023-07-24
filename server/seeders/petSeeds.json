@@ -9,7 +9,7 @@
     {
       "name": "Artemis",
       "species": "Dog",
-      "age": 0.5,
+      "age": 1,
       "image": "../../client/public/images/artemis.jpg",
       "description": "This is Artemis she is 6 months old and a happy girl that loves to run."
     },

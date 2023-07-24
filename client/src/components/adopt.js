@@ -1,40 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useQuery } from '@apollo/client';
+import { QUERY_PETS } from './utils/queries';
+// import axios from 'axios';
 
 function Adopt() {
   const [animals, setAnimals] = useState([]);
   const [search, setSearch] = useState('');
-
-  async function fetchAnimals() {
-    try {
-      const query = `
-        {
-          pets {
-            name
-            species
-            age
-            image
-            description
-          }
-        }
-      `;
-      const response = await axios.get('/graphql', {
-        params: {
-          query,
-        },
-      });
-  
-      setAnimals(response.data.data.pets);
-    } catch (error) {
-      console.error('Error fetching animals:', error);
-    }
-  }
-  
+ const{data,loading}=useQuery(QUERY_PETS)
+ const pets = data?.getAllPets || []
+ console.log(pets)
 
   // async function fetchAnimals() {
   //   try {
-  //     const response = await axios.post('/graphql', {
-  //       query: `{
+  //     const query = `
+  //       {
   //         pets {
   //           name
   //           species
@@ -42,7 +21,12 @@ function Adopt() {
   //           image
   //           description
   //         }
-  //       }`,
+  //       }
+  //     `;
+  //     const response = await axios.get('/graphql', {
+  //       params: {
+  //         query,
+  //       },
   //     });
   
   //     setAnimals(response.data.data.pets);
@@ -50,10 +34,13 @@ function Adopt() {
   //     console.error('Error fetching animals:', error);
   //   }
   // }
+  
 
-  useEffect(() => {
-    fetchAnimals();
-  }, []);
+
+
+  // useEffect(() => {
+  //   fetchAnimals();
+  // }, []);
 
   function handleSearchChange(event) {
     setSearch(event.target.value);
