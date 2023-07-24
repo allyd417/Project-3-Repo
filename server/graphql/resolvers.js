@@ -1,31 +1,61 @@
-const pets = [];
+const Pet = require('../models/Pet');
+const User = require('../models/User');
 
 const resolvers = {
-    getAllPets: () => pets,
-    getPetById: (args) => pets.find((pet) => pet.id === args.id),
-    createPet: (args) => {
-        const pet = {
-            id: Math.random().toString(),
-            name: args.name,
-            age: args.age,
-        };
-        pets.push(pet);
-        return pet;
+  Query: {
+    getAllPets: async () => await Pet.find({}),
+    getPetById: async (parent, args) => await Pet.findById(args.id),
+    getAllUsers: async () => await User.find({}),
+    getUserById: async (parent, args) => await User.findById(args.id),
+  },
+
+  Mutation: {
+    createPet: async (parent, args) => {
+      let pet = new Pet({
+        name: args.name,
+        species: args.species,
+        age: args.age,
+        image: args.image,
+        description: args.description,
+      });
+
+      return await pet.save();
     },
-    updatePet: (args) => {
-        const pet = pets.find((pet) => pet.id === args.id);
-        if (!pet) return null;
-        if (args.name) pet.name =args.name;
-        if (args.age) pet.age = args.age;
-        return pet;
+
+    updatePet: async (parent, args) => {
+      return await Pet.findByIdAndUpdate(args.id, args, { new: true }); // { new: true } ensures the updated doc is returned
     },
-    deletePet: (args) => {
-        const index = pets.findIndex((pet) => pet.id === args.id);
-        if (index === -1) return null;
-        const pet = pets[index];
-        pets.splice(index,1);
-        return pet;
+
+    deletePet: async (parent, args) => {
+      return await Pet.findByIdAndDelete(args.id);
     },
+
+    createUser: async (parent, args) => {
+      let user = new User({
+        username: args.username,
+        email: args.email,
+        password: args.password,
+      });
+
+      return await user.save();
+    },
+
+    updateUser: async (parent, args) => {
+      return await User.findByIdAndUpdate(args.id, args, { new: true });
+    },
+
+    deleteUser: async (parent, args) => {
+      return await User.findByIdAndDelete(args.id);
+    },
+
+    addPetToUser: async (parent, args) => {
+      return await User.findByIdAndUpdate(
+        args.userId,
+        { $addToSet: { savedPets: args.petId } },
+        { new: true }
+      ).populate('savedPets');
+    },
+  },
 };
 
 module.exports = resolvers;

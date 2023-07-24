@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 
+<<<<<<< HEAD
 // Sample data for dog breeds in the specified order
 const Dogs = () => {
   const [dogBreeds, setDogBreeds] = useState([
@@ -76,20 +77,86 @@ export const HomePage = () => {
     const data = await response.json();
     // data is now ready be parsed by the return JSX
     setSearchData(data);
+=======
+function Adopt() {
+  const [animals, setAnimals] = useState([]);
+  const [search, setSearch] = useState('');
+
+  async function fetchAnimals() {
+    try {
+      const query = `
+        {
+          pets {
+            name
+            species
+            age
+            image
+            description
+          }
+        }
+      `;
+      const response = await axios.get('/graphql', {
+        params: {
+          query,
+        },
+      });
+  
+      setAnimals(response.data.data.pets);
+    } catch (error) {
+      console.error('Error fetching animals:', error);
+    }
+  }
+  
+
+  // async function fetchAnimals() {
+  //   try {
+  //     const response = await axios.post('/graphql', {
+  //       query: `{
+  //         pets {
+  //           name
+  //           species
+  //           age
+  //           image
+  //           description
+  //         }
+  //       }`,
+  //     });
+  
+  //     setAnimals(response.data.data.pets);
+  //   } catch (error) {
+  //     console.error('Error fetching animals:', error);
+  //   }
+  // }
+
+  useEffect(() => {
+    fetchAnimals();
+  }, []);
+
+  function handleSearchChange(event) {
+    setSearch(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const filteredAnimals = animals.filter(animal => animal.species.toLowerCase() === search.toLowerCase());
+    setAnimals(filteredAnimals);
+>>>>>>> 2cb2933e6795a2297f7b1f350c1d849174d61dd3
   }
 
   return (
     <div>
-      <input type="text" value={searchType} onChange={handleSearchChange} placeholder="Search for a type (dog or cat)..." />
-      <input type="text" value={searchLocation} onChange={handleLocationChange} placeholder="Enter a location..." />
-      <button onClick={handleSubmit}>Search</button>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={search} onChange={handleSearchChange} placeholder="Search for a type (dog or cat)..." />
+        <button type="submit">Search</button>
+      </form>
 
       {animals.map(animal => (
         <div key={animal.id}>
           <h2>{animal.name}</h2>
           <p>{animal.description}</p>
-          {animal.photos && animal.photos[0] ? (
-            <img src={animal.photos[0].medium} alt={animal.name} />
+          {animal.image ? (
+            <img src={animal.image} alt={animal.name} />
           ) : (
             <p>Pictures coming soon</p>
           )}
@@ -99,6 +166,10 @@ export const HomePage = () => {
   );
 }
 
+<<<<<<< HEAD
 export default Adopt
 
 export default HomePage;
+=======
+export default Adopt;
+>>>>>>> 2cb2933e6795a2297f7b1f350c1d849174d61dd3
