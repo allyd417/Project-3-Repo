@@ -3,140 +3,140 @@
       "name": "Pissfingers",
       "species": "Dog",
       "age": 19,
-      "image": "../../client/public/images/pissfingers.jpeg",
+      "image": "images/pissfingers.jpeg",
       "description": "This is Pissfingers. She can't live in a home with children,books, or electricity."
     },
     {
       "name": "Artemis",
       "species": "Dog",
       "age": 1,
-      "image": "../../client/public/images/artemis.jpg",
+      "image": "images/artemis.jpg",
       "description": "This is Artemis she is 6 months old and a happy girl that loves to run."
     },
     {
       "name": "Tom",
       "species": "Cat",
       "age": 1,
-      "image": "../../client/public/images/bigeyes.jpg",
+      "image": "images/bigeyes.png",
       "description": "This is Tom he is just happy."
     },
     {
       "name": "Brodie",
       "species": "Cat",
       "age": 15,
-      "image": "../../client/public/images/partyHat.jpg",
+      "image": "images/partyHat.jpg",
       "description": "This is Brodie, he is a party animal."
     },
     {
       "name": "Athena",
       "species": "Dog",
       "age": 3,
-      "image": "../../client/public/images/athena.jpg",
+      "image": "images/athena.jpg",
       "description": "This is Athena, she is shy but loves with all her heart."
     },
     {
       "name": "The Brain",
       "species": "Cat",
       "age": 3,
-      "image": "../../client/public/images/beautifulMajestic.png",
+      "image": "images/beautifulMajestic.png",
       "description": "This is The Brain, he used to be a mouse but used science to become a cat as part of his plan to take over the world."
     },
     {
       "name": "Pinkey",
       "species": "Cat",
       "age": 2,
-      "image": "../../client/public/images/special.png",
+      "image": "images/special.png",
       "description": "This is Pinkey, he used to be a mouse but The Brian made him into a cat to assist him with taking over the world."
     },
     {
       "name": "Yacko",
       "species": "Cat",
       "age": 1,
-      "image": "../../client/public/images/halfSqurirrel.png",
+      "image": "images/halfSqurirrel.png",
       "description":"This is Yacko, we found him at the water tower with Wacko and Dot, they are zaney to the max."
     },
     {
       "name": "Wacko",
       "species": "Cat",
       "age": 1,
-      "image": "../../client/public/images/twisted.png",
+      "image": "images/twisted.png",
       "description": "This is Wacko, we found him at the water tower with Yacko and Dot, they are zaney to the max."
     },
     {
       "name": "Dot",
       "species": "Cat",
       "age": 1,
-      "image": "../../client/public/images/beautifulWhite.png",
+      "image": "images/beautifulWhite.png",
       "description": "This is Dot, we found her at the water tower with Yacko and Wacko, they are zaney to the max."
     },
     {
       "name": "Popcorn",
       "species": "Dog",
       "age": 1,
-      "image": "../../client/public/images/popcorn.jpg",
+      "image": "images/popcorn.jpg",
       "description": "This is Popcorn,she is very smart and loving."
     },
     {
       "name": "Gandalf",
       "species": "Dog",
       "age": 8,
-      "image": "../../client/public/images/gandalf.jpg",
+      "image": "images/gandalf.jpg",
       "description": "This is Gandalf,he is very intelegent and loyal."
     },
     {
       "name": "Neil",
       "species": "Dog",
       "age": 3,
-      "image": "../../client/public/images/neil.jpg",
+      "image": "images/neil.jpg",
       "description": "This is Neil,he loves to play fectch, he always has his balls just in case."
     },
     {
       "name": "Ripley",
       "species": "Dog",
       "age": 13,
-      "image": "../../client/public/images/ripley.jpg",
+      "image": "images/ripley.jpg",
       "description": "This is Ripley,she is a very happy girl and full of love."
     },
     {
       "name": "Betty",
       "species": "Dog",
       "age": 4,
-      "image": "../../client/public/images/Betty.jpg",
+      "image": "images/Betty.jpg",
       "description": "This is Betty,she is the best mother dog I have ever seen."
     },
     {
       "name": "Bandit",
       "species": "Dog",
       "age": 3,
-      "image": "../../client/public/images/Bandit.jpg",
+      "image": "images/Bandit.jpg",
       "description": "This is Bandit, he is one of Betty's babies and he will steal your heart."
     },
     {
       "name": "Appa",
       "species": "Dog",
       "age": 3,
-      "image": "../../client/public/images/Appa.jpg",
+      "image": "images/Appa.jpg",
       "description": "This is Appa, he is one of Betty's babies and he will fly away with you at any time."
     },
     {
       "name": "Sally",
       "species": "Dog",
       "age": 3,
-      "image": "../../client/public/images/Sally.jpg",
+      "image": "images/Sally.jpg",
       "description": "This is Sally, she is one of Betty's babies and she is full of very smart and ready to learn."
     },
     {
       "name": "Neil",
       "species": "Dog",
       "age": 3,
-      "image": "../../client/public/images/Neil2.jpg",
+      "image": "images/Neil2.jpg",
       "description": "This is Neil, he is one of Betty's babies and he will drum out time for you with his tail."
     },
     {
       "name": "Max",
       "species": "Dog",
       "age": 7,
-      "image": "../../client/public/images/Max.jpg",
+      "image": "images/Max.jpg",
       "description": "This is Max, he is a angel in heaven looking down on me now."
     }
 
