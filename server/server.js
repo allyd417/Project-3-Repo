@@ -43,5 +43,8 @@ if (process.env.NODE_ENV === 'production') {
     })
     };
     
+    const port = process.env.PORT || 5000; // Use port provided by Heroku or default to 5000
+    
+
   // Call the async function to start the server
     startApolloServer();
