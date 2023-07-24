@@ -91,7 +91,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_PETS } from './utils/queries';
 import styles from './css/Adopt.module.css';
 import { SAVE_PET } from './utils/mutations';
@@ -105,6 +105,8 @@ function Adopt() {
   const [search, setSearch] = useState('');
   const [originalPets, setOriginalPets] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const [savePet, { error }] = useMutation(SAVE_PET);
 
   useEffect(() => {
     const pets = data?.getAllPets || [];
@@ -137,16 +139,16 @@ function Adopt() {
 
   const handleSavePet = async (petId) => {
     try {
-      const userId = AuthService.getProfile(); // Get the user ID from the authService instance
-      console.log('User ID:', userId); // Verify that the user ID is correctly obtained
-      const { data } = await SAVE_PET({
-        variables: { userId: userId, petId }, // Use the obtained user ID
-      });
+      const userId = AuthService.getProfile();
+      console.log('User ID:', userId);
+      const { data } = await savePet({ variables: { petId: petId, userId: userId } }); // Use the savePet function returned from useMutation
       console.log(data.savePet);
     } catch (error) {
-      console.error(error);
+      console.error('Error in handleSavePet:', error);
     }
   }
+
+ 
 
   return (
     <div>

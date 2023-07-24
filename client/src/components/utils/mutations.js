@@ -69,24 +69,24 @@ export const ADD_USER = gql`
   }
 `;
 
-export const SAVE_SEARCH = gql`
-  mutation saveSearch($userId: ID!, $searchCriteria: String!, $results: [ID]!) {
-    saveSearch(userId: $userId, searchCriteria: $searchCriteria, results: $results) {
-      _id
-      savedSearches {
-        _id
-        searchCriteria
-        results {
-          _id
-          name
-          type
-          description
-          imageUrl
-        }
-      }
-    }
-  }
-`;
+// export const SAVE_SEARCH = gql`
+//   mutation saveSearch($userId: ID!, $searchCriteria: String!, $results: [ID]!) {
+//     saveSearch(userId: $userId, searchCriteria: $searchCriteria, results: $results) {
+//       _id
+//       savedSearches {
+//         _id
+//         searchCriteria
+//         results {
+//           _id
+//           name
+//           type
+//           description
+//           imageUrl
+//         }
+//       }
+//     }
+//   }
+// `;
 
 // Define the SAVE_PET mutation
 export const SAVE_PET = gql`
