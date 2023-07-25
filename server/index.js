@@ -3,11 +3,12 @@ const path = require('path');
 const { graphqlHTTP } = require('express-graphql');
 
 const mongoose= require('mongoose');
- const schema = require('./graphql/schema');
- const resolvers = require('./graphql/resolvers');
+ const schema = require('./schemas/schema');
+ const resolvers = require('./schemas/resolvers');
+ const { typeDefs, resolvers } = require('./schemas');
 
  const app = express();
- const PORT = 3000;
+ const PORT = process.env.PORT || 3001;
  
  //serve static files from public  folder 
  app.use(express.static(path.join(__dirname, '../client/build')));
@@ -37,8 +38,6 @@ mongoose.connection.once('open', () => {
     console.log('Connected to database');
 });
 
-// Modify the port configuration to use the environment variable provided by Heroku
-const port = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
